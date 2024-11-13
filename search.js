@@ -4,7 +4,7 @@ target = 4
 for (let i = 0; i < arr.length; i++) {
      if(arr[i]==target)  console.log(i);
 }
-
+O(n)
 
 2) binary Search
 arr = [1,2,3,4,5,6,7,8,9]
@@ -51,20 +51,6 @@ console.log(binary(arr,target));
 
 BIG O - O(log n)
 
-Naive String
-long = 'lorie loled'
-short = 'lol'
-c=0
-for (let i = 0; i < long.length; i++) {
-    for (let j = 0; j < short.length; j++) {
-        if(long[i+j] != short[j]){
-            break;
-        }
-        if ( j == short.length-1) {
-            c++
-        }
-    }
-}
-console.log(c);
+
 
 

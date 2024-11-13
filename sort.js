@@ -61,7 +61,7 @@
     }
     function merge(left,right){
     const result = []
-    while(left.length && right.length){
+    while(left.length && right.length){ 
         if (left[0] <= right[0]) {
             result.push(left.shift())
         }else{
@@ -70,7 +70,7 @@
     }
     return [...result,...left,...right]
     }
-    const arr = [2,7,3,8,5]
+    const arr = [2,7,3,8,5] 
     console.log(mergeSort(arr));
 
 
@@ -81,7 +81,7 @@
         }
         let pivot = arr[arr.length -1]
         let left = []
-        let right = []
+        let right = []  
         for (let i = 0; i < arr.length-1; i++) {
                 if (arr[i] < pivot) {
                     left.push(arr[i])

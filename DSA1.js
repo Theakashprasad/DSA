@@ -1,4 +1,4 @@
-1) FIBONACCi
+    1) FIBONACCi
 function a(n){
     let feb = [0,1]
     for(let i=2 ; i<n ;i++){ 

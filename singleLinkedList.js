@@ -10,12 +10,7 @@ class linkedList{
     constructor(){
         this.head = null
     }
-
-    addFirst(data){
-        const newNode = new Node(data)
-        newNode.next = this.head
-        this.head =  newNode
-    }
+ 
 
     addLast(data){
         const newNode = new Node(data);
@@ -111,3 +106,112 @@ a.reverse()
 a.print()
 
 
+// To find the duplicate value
+// duplicate() {
+//     let c = this.head;
+//     let a = new Set();
+//     let arr = [];
+
+//     while (c) {
+//       if (a.has(c.data)) {
+//         arr.push(c.data);
+//       } else {
+//         a.add(c.data);
+//       }
+//       c = c.next;
+//     }
+//     // console.log(arr);
+//     let newC = this.head;
+//     while (newC) {
+//       if (arr.includes(newC.data)) {
+//         newC = newC.next.next;
+//       } else {
+//         console.log(newC.data);
+//         newC = newC.next; // Move to the next node
+//       }
+//     }
+//     this.head = newC;
+//   }
+
+
+//TO REMOVE ODD NUMBERS
+// removeOdd() {
+//     if (this.head && this.head.data % 2 != 0) {
+//       this.head = this.head.next;
+//     }
+//     let c = this.head;
+//     while (c && c.next) {
+//       console.log(c.data);
+//       if (c.next.data % 2 != 0) {
+//         c.next = c.next.next;
+//       } else {
+//         c = c.next;
+//       }
+//     }
+//   }
+
+
+// TO REMOVE DUPLICATE ELEMENT
+// removeDuplicates(){
+//     let seen  = new Set()
+//     let previous = null
+//     let cur = this.head
+//     while(cur){
+//       if( seen.has(cur.data) ){
+//         previous.next = cur.next
+//       }else{
+//           seen.add(cur.data)
+//           previous = cur
+//       }
+//       cur = cur.next
+//     }
+//   }
+
+
+//SORT
+// function sort(orginal){
+//     let tempStack = new LinkedList()
+//     while(!orginal.isempty()){
+//         let cur = orginal.pop()
+//         while(!tempStack.isempty() && cur < tempStack.peak()){
+//             orginal.add(tempStack.pop())
+//         }
+//         tempStack.add(cur)
+//     }
+//     while(!tempStack.isempty()){
+//         orginal.add(tempStack.pop())
+//     }
+// }
+
+
+// MERGE
+// function merge(l1, l2) {
+//     let dump = new LinkedList()
+//     let cur = dump
+
+//     let list1 = l1.head
+//     let list2 = l2.head
+
+//     while( list1 && list2){
+//         if( list1.data < list2.data ){
+//             cur.next = list1
+//             list1  = list1.next
+//         }else{
+//             cur.next = list2
+//             list2 = list2.next
+//         }
+//         cur = cur.next
+//     }
+
+//     if( list1){
+//         cur.next = list1
+//     }else{
+//         cur.next = list2
+
+//     }
+
+
+
+//     return  dump.next
+
+// }

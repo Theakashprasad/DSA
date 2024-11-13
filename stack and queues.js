@@ -31,6 +31,22 @@ class stack{
     }
 }
 
+// sort(){
+//     let tempStack = new Stack()
+//     while(!this.isEmpty()){
+//           let cur = this.pop()
+//           while( !tempStack.isEmpty() && cur < tempStack.peak()){
+//             this.add(tempStack.pop())
+//           }
+//           tempStack.add(cur)
+//     }
+
+//     while(!tempStack.isEmpty()){
+//         this.add(tempStack.pop())
+//     }
+
+// }
+
 let list = new stack()
 list.push(1)
 list.push(2)
@@ -39,6 +55,27 @@ list.push(4)
 list.pop()
 list.print()
 
+// const isValidParentheses = (s) => {
+//     const stack = [];
+//     const isValidParentheses = {
+//       "{": "}",
+//       "[": "]",
+//       "(": ")",
+//     };
+  
+//     for (let val of s) {
+//       if (isValidParentheses[val]) {
+//         stack.push(val);
+//       } else if (Object.values(isValidParentheses).includes(val)) {
+//         const top = stack.pop();
+//         if (val != isValidParentheses[top]) return false;
+//       }
+//     }
+//     return stack.length == 0;
+//   };
+  
+//   console.log(isValidParentheses("()[]({}")); // true
+  
 
 class Node{
     constructor(data){
