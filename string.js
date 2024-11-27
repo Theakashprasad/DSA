@@ -6,7 +6,7 @@ for (let i = a.length-1; i >=0 ; i--) {
 }
 console.log(b);
 
-2) string value 
+2) string value occurrence
 const val = 'aanoog'
 function a(val) {
     let result = {}
@@ -27,7 +27,7 @@ a = 'abc'
 console.log(a.charCodeAt(2));
 
 
-3) Change the last valur to uppercase 
+3) Change the last valur to uppercase   
 const a = 'akash'  
 let b = []
 for (let i = 0 ; i <= a.length-1; i++) {
@@ -60,3 +60,12 @@ var isValid = function(s) {
     return arr.length === 0
  }
 
+
+////////// FIRST LETTER TO UPPERCASE
+ function a(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+  str = "asdf";
+  b = a(str);
+  console.log(b);
+  

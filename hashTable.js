@@ -65,7 +65,7 @@ class hash{
         }
         return hashed % this.size
     }
-    quadratic(index , attempt){
+    quadratic(index , attempt){ 
       return( index + attempt ** 2 ) % this.size 
     }
     put(key,value){
@@ -213,17 +213,20 @@ newHash.dispaly()
       hashTable.display();
     
 
-// FIND THE DUPLICATE 
-      // const arr = [1, 2, 1, 2, 3];
-      // let hashTable = {};
-      // let dup = [];
-      // for (let val of arr) {
-      //   if (hashTable[val]) {
-      //     if (hashTable[val]) dup.push(val);
-      //     hashTable[val] += 1;
-      //   } else {
-      //     hashTable[val] = 1;
-      //   }
-      // }
-      // console.log(dup);
-      
+////////////////////////////////////////////////////////// FIND THE DUPLICATE //////////////////////////////////////////////////////////
+// const arr = [1, 2, 3, 4, 3, 2, 5];
+// let dup = [];
+// let hashTable = {};
+
+// for (let val of arr) {
+//   if (hashTable[val] == undefined) {
+//     hashTable[val] = 1;
+//   } else {
+//     hashTable[val]++;
+//     if (hashTable[val] > 1) {
+//       dup.push(val);
+//     }
+//   }
+// }
+
+// console.log(dup);

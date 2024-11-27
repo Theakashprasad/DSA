@@ -1,110 +1,167 @@
 // LINLEDLIST
-class Node{
-    constructor(data){ 
-        this.data = data  
-        this.next = null
-    }
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
 }
 
-class linkedList{
-    constructor(){
-        this.head = null
+class linkedList {
+  constructor() {
+    this.head = null;
+  }
+
+  size() {
+    let a = this.head;
+    let c = 0;
+    while (a) {
+      c++;
+      a = a.next;
     }
- 
+    return c;
+  }
 
-    addLast(data){
-        const newNode = new Node(data);
-        if(!this.head){
-              this.head = newNode;
-              return
-        }
-        let current = this.head;
-        while(current.next){
-            current = current.next
-        }
-        current.next = newNode
+  addLast(data) {
+    const newNode = new Node(data);
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+    let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.next = newNode;
+  }
+
+  addMid(data) {
+    const newNode = new Node(data);
+    let pre = null;
+    let slow = this.head;
+    let fast = this.head;
+
+    while (fast && fast.next) {
+      pre = slow;
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+    newNode.next = slow;
+    pre.next = newNode;
+  }
+
+  addToPostion(index, data) {
+    let c = this.head;
+    const newNode = new Node(data);
+    for (let i = 0; i < index - 1; i++) {
+      c = c.next;
+    }
+    newNode.next = c.next;
+    c.next = newNode;
+  }
+
+  removeLast() {
+    let c = this.head;
+    while (c.next.next) {
+      c = c.next;
+    }
+    c.next = null;
+  }
+
+  removeMid() {
+    let pre = null;
+    let slow = this.head;
+    let fast = this.head;
+
+    while (fast && fast.next) {
+      pre = slow;
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+    // console.log(slow.data);
+    pre.next = slow.next;
+    slow.next = null;
+  }
+
+  removePostion(index) {
+    let c = this.head;
+
+    for (let i = 0; i < index - 1; i++) {
+      c = c.next;
     }
 
-    size(){
-        let a = this.head
-        let c = 0
-        while(a){
-            c++
-            a =a.next
-        }
-        return c
+    if (c.next) {
+      c.next = c.next.next;
     }
- 
+  }
 
-    addToPostion(index,data){
-        let c = this.head
-        const newNode = new Node(data)
-            for(let i=0 ; i < index-1; i++){
-                 c = c.next
-            }
-            newNode.next = c.next 
-            c.next = newNode
+  oddRemove() {
+    let cur = this.head;
+    while (cur && cur.next) {
+      if (cur.next.data % 2 != 0) {
+        cur.next = cur.next.next;
+      } else {
+        cur = cur.next;
+      }
     }
+    if (this.head.data % 2 != 0) this.head = this.head.next;
+  }
 
-    removeLast(){
-        let c = this.head
-        while (c.next.next) {
-            c = c.next
-        }
-        c.next = null
+  print() {
+    let c = this.head;
+    while (c) {
+      console.log(c.data);
+      c = c.next;
     }
+  }
 
-    removePostion(index){
-        let c = this.head
-                               
-        for (let i = 0; i < index-1; i++) {
-            c = c.next            
-        }
+  reverse() {
+    let cuernt = this.head;
+    let previous = null;
 
-        if(c.next){
-            c.next = c.next.next
-        }
+    while (cuernt != null) {
+      const newNode = cuernt.next;
+      cuernt.next = previous;
+      previous = cuernt;
+      cuernt = newNode;
     }
 
-    print(){
-        let c = this.head
-        while(c){
-            console.log(c.data);
-            c = c.next
-        }
+    this.head = previous;
+  }
+
+  duplicateRemove() {
+    let cur = this.head;
+    let seen = new Set();
+    let arr = [];
+    while (cur) {
+      if (seen.has(cur.data)) {
+        arr.push(cur.data);
+      }
+      seen.add(cur.data);
+      cur = cur.next;
     }
-
-    reverse(){
-        let cuernt=this.head
-        let previous = null
-
-        while(cuernt != null){
-           const newNode = cuernt.next
-           cuernt.next = previous
-           previous = cuernt
-           cuernt = newNode 
-        }
-
-        this.head = previous
-
+    cur = this.head;
+    while (cur && cur.next) {
+      if (arr.includes(cur.next.data)) {
+        cur.next = cur.next.next;
+      } else {
+        cur = cur.next;
+      }
     }
-
-
+    if (arr.includes(this.head.data)) this.head = this.head.next;
+  }
 }
 
-const a = new linkedList
-a.addFirst(2)
-a.addFirst(3)
-a.addFirst(4)
-a.addFirst(5)
-a.addToPostion(1,8)
-a.reverse()
+const a = new linkedList();
+a.addFirst(2);
+a.addFirst(3);
+a.addFirst(4);
+a.addFirst(5);
+a.addToPostion(1, 8);
+a.reverse();
 // a.aaa()
 
-
-// console.log(JSON.stringify(a,null,2)); 
-a.print()
-
+// console.log(JSON.stringify(a,null,2));
+a.print();
 
 // To find the duplicate value
 // duplicate() {
@@ -133,8 +190,7 @@ a.print()
 //     this.head = newC;
 //   }
 
-
-//TO REMOVE ODD NUMBERS
+////////////////////////////////////////////////////// TO REMOVE ODD NUMBERS /////////////////////////////////////////////////////////
 // removeOdd() {
 //     if (this.head && this.head.data % 2 != 0) {
 //       this.head = this.head.next;
@@ -150,8 +206,24 @@ a.print()
 //     }
 //   }
 
+////////////////// FUNCTION BASED
+// function removeOdd(list) {
+//   let orginal = list.head;
+//   while (orginal && orginal.next) {
+//     if (orginal.next.data % 2 == 0) {
+//       orginal.next = orginal.next.next;
+//     } else {
+//       orginal = orginal.next;
+//     }
+//   }
+//   if (list.head.data % 2 == 0) {
+//     list.head = list.head.next;
+//   }
+//   return list.head;
+// }
 
-// TO REMOVE DUPLICATE ELEMENT
+
+///////////////////////////////////////////////////////// TO REMOVE DUPLICATE ELEMENT /////////////////////////////////////////////////////////
 // removeDuplicates(){
 //     let seen  = new Set()
 //     let previous = null
@@ -168,7 +240,24 @@ a.print()
 //   }
 
 
-//SORT
+////////////////////////////////////////////////////////////// SORT /////////////////////////////////////////////////////////
+// sort() {
+//   let tempList = new Linkedlist();
+//   while (!this.isEmpty()) {
+//     let tempVal = this.pop();
+//     while (!tempList.isEmpty() && tempList.peak() > tempVal) {
+//       this.insert(tempList.pop());
+//     }
+//     tempList.insert(tempVal);
+//   }
+  
+//   while( !tempList.isEmpty()){
+//       this.insert( tempList.pop() )
+//   }
+  
+// }
+
+/////////////// FUNCTION
 // function sort(orginal){
 //     let tempStack = new LinkedList()
 //     while(!orginal.isempty()){
@@ -182,7 +271,6 @@ a.print()
 //         orginal.add(tempStack.pop())
 //     }
 // }
-
 
 // MERGE
 // function merge(l1, l2) {
@@ -210,8 +298,38 @@ a.print()
 
 //     }
 
-
-
 //     return  dump.next
 
+// }
+
+
+///////////////////////////////////////////////////////////  REMOVE ALL DUPLICATE /////////////////////////////////////////////////////////
+// function duplicate(list) {
+//   let seen = new Set();
+//   let arr = [];
+//   let cur = list.head;
+
+//   while (cur) {
+//     if (seen.has(cur.data)) {
+//       arr.push(cur.data);
+//     }
+//     seen.add(cur.data);
+//     cur = cur.next;
+//   }
+
+//   cur = list.head;
+//   let per = null;
+
+//   while (cur && cur.next) {
+//     if (arr.includes(cur.next.data)) {
+//       cur.next = cur.next.next;
+//     } else {
+//       cur = cur.next;
+//     }
+//   }
+//   if (arr.includes(list.head.data)) {
+//     list.head = list.head.next;
+//   }
+
+//   return list.head;
 // }

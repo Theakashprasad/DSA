@@ -77,6 +77,8 @@ list.print()
 //   console.log(isValidParentheses("()[]({}")); // true
   
 
+QUEUE
+
 class Node{
     constructor(data){
         this.data = data

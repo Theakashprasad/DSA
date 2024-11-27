@@ -1,8 +1,8 @@
-1) find the sum of a value
+1) FIND THE SUM OF VALUE
 5 =  5+4+3+2+1 = 15
 n = 5;
 a = (n * (n + 1)) / 2; 
-console.log(a); 
+console.log(a); O(1)
 
 
 forLoop
@@ -11,14 +11,13 @@ for(let i of a){
     console.log(i)
 } 
 
-
 find by index
 a = [2,2,3,4,5]
 b = a.indexOf(3)
 console.log(b);
  
 
-find the duplicate element
+2) FIND THE DUPLICATE ELEMENT
 arr = [6,3,3,5,2,5]
 let flag =0
 b = []
@@ -37,7 +36,7 @@ a.push(3,4)
 console.log(a);
 
 
-2 dimentional array to flat
+3) 2 DIMENTIONAL ARRAY TO FLAT
 a=[[3,4,5,],[5,6,7,]] 
 c=[]
 for (let i = 0; i < a.length; i++) { 
@@ -60,7 +59,7 @@ while(num!=0){
 console.log(a==result)
 
 
-reversing number
+4) REVERSEING A NUMBER
 x=1550
 let t = 0;
 while (x!=0) {
@@ -69,6 +68,7 @@ while (x!=0) {
 }
 console.log(t);     
 
+5) FIND THE COUNT IN STRING
 a = 'akash';
 b = {};
 for (let i = 0; i < a.length; i++) {
@@ -80,6 +80,7 @@ for (let i = 0; i < a.length; i++) {
 }
 console.log(b);
 
+6) FIND THE COUNT IN NUMBER
 a=[1,2,3,4,5,6,7,8,9]
 b={}
 n=2
@@ -103,3 +104,17 @@ var mySqrt = function (x) {
 };
 mySqrt(10)
 
+7) FIND THE DUPLICATE
+const a = "abcabc";
+let newArr = [];
+for (let i = 0; i < a.length; i++) {
+  let flag = true;
+  for (let j = 0; j < newArr.length; j++) {
+    if (a[i] == newArr[j]) {
+      flag = false;
+      break;
+    }
+  }
+  if (flag) newArr.push(a[i]);
+}
+console.log(newArr);
