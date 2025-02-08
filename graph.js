@@ -1,4 +1,4 @@
-class Graph{
+class Graph{  
     constructor(){
        this.adjacencyList = {}
     }
@@ -100,3 +100,134 @@ graph.addEdge('e','f')
 graph.depthFirstRecursive('a')
 // graph.breadthFirstRecursion('a')
 // graph.display()
+
+
+
+
+
+
+class Graph {
+    constructor() {
+      this.adjustancyList = {};
+    }
+  
+    addVertex(vertex) {
+      if (!this.adjustancyList[vertex]) this.adjustancyList[vertex] = [];
+    }
+  
+    addEdge(v1, v2) {
+      this.adjustancyList[v1].push(v2);
+      this.adjustancyList[v2].push(v1);
+    }
+  
+    display() {
+      for (let vertex in this.adjustancyList) {
+        console.log(vertex, "-->", [...this.adjustancyList[vertex]]);
+      }
+    }
+  
+    removeEdge(v1, v2) {
+      this.adjustancyList[v1] = this.adjustancyList[v1].filter(
+        (val) => val !== v2
+      );
+      this.adjustancyList[v2] = this.adjustancyList[v2].filter(
+        (val) => val !== v1
+      );
+    }
+  
+    removeVertex(vertex) {
+      while (this.adjustancyList[vertex].length) {
+        let cur = this.adjustancyList[vertex].pop();
+        this.removeEdge(vertex, cur);
+      }
+      delete this.adjustancyList[vertex];
+    }
+  
+    DFS(v) {
+      let result = [];
+      let visted = {};
+      let adjustancyList = this.adjustancyList;
+      (function dfs(vertex) {
+        visted[vertex] = true;
+        result.push(vertex);
+        adjustancyList[vertex].forEach((neighbour) => {
+          if (!visted[neighbour]) {
+            dfs(neighbour);
+          }
+        });
+      })(v);
+      console.log(result);
+    }
+  
+    BFS(v) {
+      const queue = [v];
+      const result = [];
+      const visted = {};
+      let currentvertex;
+      visted[v] = true;
+      while (queue.length) {
+        currentvertex = queue.shift();
+        result.push(currentvertex);
+        this.adjustancyList[currentvertex].forEach((neighbour) => {
+          if (!visted[neighbour]) {
+            queue.push(neighbour);
+            visted[neighbour] = true;
+          }
+        });
+      }
+      console.log(result);
+      
+    }
+  }
+  
+  const graph = new Graph();
+  graph.addVertex("a");
+  graph.addVertex("b");
+  graph.addVertex("c");
+  graph.addVertex("d");
+  
+  graph.addEdge("a", "b");
+  graph.addEdge("b", "c");
+  graph.addEdge("c", "d");
+  graph.addEdge("d", "a");
+  
+  graph.BFS("a");
+  // console.log("////////////");
+  // graph.removeVertex("a");
+  // graph.display();
+      
+
+  function isCyclicUndirected(graph) {
+    const visited = new Set();
+  
+    function dfs(v, parent) {
+      visited.add(v);
+  
+      for (const neighbor of graph[v]) {
+        if (!visited.has(neighbor)) {
+          if (dfs(neighbor, v)) return true;
+        } else if (neighbor !== parent) {
+          return true;
+        }
+      }
+  
+      return false;
+    }
+  
+    for (const vertex in graph) {
+      if (!visited.has(vertex)) {
+        if (dfs(vertex, null)) return true;
+      }
+    }
+  
+    return false;
+  }
+  
+  const graphUndirected = {
+    0: [1, 2],
+    1: [0, 2],
+    2: [0, 1, 3],
+    3: [2]
+  };
+  
+  console.log(isCyclicUndirected(graphUndirected)); // Output: true

@@ -96,3 +96,16 @@ function aa(a) {
   return count;
 }
 console.log(aa(a));
+
+
+////////////////////Remove the duplicates from array using recursion?
+const arr = [1, 2, 3, 2, 4, 1, 5, 3];
+function removeDup(arr, idx = 0, unique= []){
+    if( arr.length == idx ) return unique
+    
+    if( !unique.includes( arr[idx] ) ) unique.push(arr[idx])
+    
+     return removeDup(arr, idx+1, unique)
+}
+
+console.log(removeDup(arr))

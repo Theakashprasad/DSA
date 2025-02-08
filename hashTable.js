@@ -111,7 +111,7 @@ class doubleHash{
       return hashed %  10
     }
     hash2(key){
-       return  7 - (key.length % 7 )
+       return  7 - (key.length % 7 )  
     }
     set(key,value){
         let index = this.hash(key)

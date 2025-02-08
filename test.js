@@ -1,32 +1,50 @@
-class HashMap{
-    constructor(size = 10){
-        this.table = Array(size)
-        this.size = size
-    }
-
-    hash(key){
-        let hashIndex = 0
-        for (let i = 0; i < key.length; i++) {
-            hashIndex += key.charCodeAt(i)
-        }
-        return hashIndex % this.size
-    }
-    insert(key, val){
-        const index = this.hash(key)
-        if( !this.table[index] ){
-            this.table = []
-        }
-        this.table[index] = {key, val}
-        
-    }
-    display(){
-        for (let i = 0; i < this.size; i++) {
-            console.log(this.table[i]);
-                        
-        }
-    }
+class Node{
+  constructor(val){
+    this.value = val
+    this.left = null
+    this.right = null
+  }
 }
 
-const newHash = new HashMap
-newHash.insert('name', 'ak')
-newHash.display()
+class BST{
+  constructor(){
+    this.root = null
+  }
+  insert(val){
+    const newNode = new Node(val)
+    if( !this.root ){
+       this.root = newNode
+    }else{
+        this.insertNode(this.root, val)
+    }
+  }
+  insertNode(node, val){
+    if( node.value > val ){
+      if( node.left !== null){
+        node.left = val
+      }else{
+        this.insertNode(node.left, val)
+      }
+    }else{
+      if( node.right !== val){
+        node.right = val
+      }else{
+        this.insertNode(node.right, val)
+      }
+    }
+  }
+  preOrder(root) {
+    if (root) {
+      console.log(root.value);
+      this.preOrder(root.left);
+      this.preOrder(root.right);
+    }
+  }
+}
+
+const bst = new BST
+bst.insert(5)
+bst.insert(10)
+bst.insert(3)
+
+bst.preOrder(bst.root)
